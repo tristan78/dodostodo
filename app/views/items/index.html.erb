@@ -3,6 +3,24 @@
 <hr>
 
 <% @items.each do |item| %>
-    <h2><%= link_to item.title, item %></h2>
-    <p><%= item.description %></p>
+    <div class="row item">
+        <% if item.completed? %>
+            <div class="col-md-6">
+                <h2><s><%= link_to item.title, item %></s></h2>
+                <p><%= time_ago_in_words(item.completed_at) %> ago.</p>
+            </div>
+            <div class="col-md-2">
+            </div>
+        <% else %>
+            <div class="col-md-6">
+                <h2><%= link_to item.title, item %></h2>
+                <p><%= item.description %></p>
+            </div>
+            <div class="col-md-2">
+                <%= link_to complete_item_path(item), method: :patch do %>
+                    <h3><i class="fa fa-check" aria-hidden="true"></i></h3>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
 <% end %>

@@ -1,6 +1,12 @@
 <h2><%= @item.title %></h2>
 <p><%= @item.description %></p>
 
-<%= link_to "Zurück", root_path %>
-<%= link_to "Editieren", edit_item_path %>
-<%= link_to "Löschen", item_path(@item), method: :delete, data: {confirm: "Bist du sicher?"} %>
+<%= link_to root_path  do %>
+    <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+<% end %>
+<%= link_to edit_item_path do %>
+    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+<% end %>
+<%= link_to item_path(@item), method: :delete, data: {confirm: "Bist du sicher?"} do %>
+    <i class="fa fa-trash" aria-hidden="true"></i>
+<% end %>
