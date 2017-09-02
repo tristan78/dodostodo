@@ -1,2 +1,8 @@
 <h1>Meine Aufgaben</h1>
-<p>Neue Aufgaben eintragen...</p>
+<%= link_to "Neue Aufgabe", new_item_path, :class => "btn btn-default" %>
+<hr>
+
+<% @items.each do |item| %>
+    <h2><%= item.title %></h2>
+    <p><%= item.description %></p>
+<% end %>
